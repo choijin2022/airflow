@@ -4,7 +4,7 @@ from airflow.operators.bash import BashOperator
 
 with DAG(
     dag_id="dags_bash_select_fruit",
-    schedule="10 * * * 6#1",
+    schedule="10 0 * * 6#1",
     start_date=pendulum.datetime(2023,11,8,tz="Asia/Seoul"),
     catchup=False
 ) as dag:
@@ -16,7 +16,7 @@ with DAG(
         task_id="t2_avocado",
         bash_command="/opt/airflow/plugins/shell/select_fruit.sh AVOCADO",
     )
-    
+
     t1_orange >> t2_avocado
 
 
