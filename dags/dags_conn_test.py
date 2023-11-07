@@ -48,6 +48,13 @@ with DAG(
         bash_command="echo $HOSTNAME",
     )
 
-    bash_t1 >> [bash_t2, bash_t3] >> bash_t4 
-    bash_t5 >> bash_t4
-    [bash_t4, bash_t7] >> bash_t6 >> bash_t8
+    # bash_t1 >> [bash_t2, bash_t3] >> bash_t4 
+    # bash_t5 >> bash_t4
+    # [bash_t4, bash_t7] >> bash_t6 >> bash_t8
+    bash_t1.set_downstream([bash_t2, bash_t3])
+    bash_t4.set_upstream([bash_t2, bash_t3,bash_t5])
+    bash_t4.set_upstream([bash_t4, bash_t7])
+    bash_t6.set_downstream(bash_t8)
+
+    
+
