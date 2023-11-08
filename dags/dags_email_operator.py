@@ -17,7 +17,7 @@ with DAG(
         to = 'choeji2022@gmail.com',
         subject = 'airflow 성공 메일',
         html_content = 'airflow 작업이 완료되었습니다',
-        conn_id="your_smtp_connection", 
+        conn_id="google_smtp_connection", 
         dag=dag,
 
     )
